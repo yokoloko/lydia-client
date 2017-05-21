@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+    db:
+        image: mysql
+        volumes:
+            - "./.data/lydia:/var/lib/mysql"
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: lydia
+            MYSQL_USER: root
+            MYSQL_PASSWORD: userpass
+    php:
+        build: php7-fpm
+        volumes:
+            - ./../:/var/www/lydia
+    nginx:
+        build: nginx
+        ports:
+            - 80:80
+        volumes_from:
+            - php
+        volumes:
+            - ./logs/nginx/:/var/log/nginx
+
+    redis:
+        image: redis:alpine
+        ports:
+            - 6379:6379

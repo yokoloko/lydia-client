@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_errors(form) }}
+{{ form_end(form) }}
+
+<table>
+{% for user in users %}
+    <tr>
+        <td>{{ user.email }}</td>
+        <td>{{ user.publicToken }}</td>
+    </tr>
+{% endfor %}
+</table>
+
+{% block javascripts %}{% endblock %}
+
+</body>
+</html>

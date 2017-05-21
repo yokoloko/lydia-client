@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+
+<table>
+    {% for request in requests %}
+        <tr>
+            <td>{{ request.id }}</td>
+            <td>{{ request.amount }}</td>
+            <td><a href="{{ request.url }}">Pay</a></td>
+            <td><a href="{{ path('status', {'id': request.id}) }}">Get status</a></td>
+        </tr>
+    {% endfor %}
+</table>
+
+{% block javascripts %}{% endblock %}
+
+</body>
+</html>
