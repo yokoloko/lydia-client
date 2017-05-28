@@ -1,7 +1,7 @@
 version: '2'
 
 services:
-    db:
+    mydb:
         image: mysql
         volumes:
             - "./.data/lydia:/var/lib/mysql"
